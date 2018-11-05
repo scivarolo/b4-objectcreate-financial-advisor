@@ -21,7 +21,8 @@ const Advisor = Object.create(null, {
         price: 34.59,
         buyTransaction: true
       }
-    ]
+    ],
+    writable: true
   },
   worth: {
     value: function () {
@@ -46,6 +47,35 @@ const Advisor = Object.create(null, {
         buyTransaction: true
       }
       this.portfolio.push(transaction)
+    }
+  },
+  sell: {
+    value: function (stock, quantity, price) {
+      let transaction = {
+        stock: stock,
+        quantity: quantity,
+        price: price,
+        buyTransaction: false
+      }
+      //look for any transactions with this stock and calculate quantity currently owned.
+      //Don't sell if trying to sell more than amount owned.
+      let ownedQuantity = 0;
+
+      this.portfolio.forEach(transaction => {
+        if (transaction.stock === stock) {
+          if (transaction.buyTransaction === true) {
+            ownedQuantity += transaction.quantity
+          } else if (transaction.buyTransaction === false) {
+            ownedQuantity -= transaction.quantity
+          }
+        }
+      })
+      if (ownedQuantity > quantity) {
+        this.portfolio.push(transaction)
+        alert(`You sold ${quantity} shares of ${stock}. You now own ${ownedQuantity - quantity} shares.`)
+      } else {
+        alert(`${quantity} shares of ${stock} cannot be sold. You only own ${ownedQuantity}.`)
+      }
     }
   }
 })
