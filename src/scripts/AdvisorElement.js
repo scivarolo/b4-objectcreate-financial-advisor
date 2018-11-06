@@ -1,5 +1,7 @@
 /* Builds a document fragment containing advisor component */
 
+import buildPortfolio from "./portfolioElement"
+
 function buildAdvisor(advisor) {
   let advisorFrag = document.createDocumentFragment()
   let advisorEl = document.createElement("div")
@@ -11,6 +13,7 @@ function buildAdvisor(advisor) {
     <p>Specialty: ${advisor.specialty}</p>
   `
   advisorFrag.appendChild(advisorEl)
+  advisorFrag.appendChild(buildPortfolio(advisor))
   return advisorFrag
 }
 

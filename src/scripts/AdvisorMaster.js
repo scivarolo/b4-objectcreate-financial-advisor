@@ -4,32 +4,6 @@ const Advisor = Object.create(null, {
     enumerable: true,
     writable: true
   },
-  specialty: {
-    value: "Technology",
-    enumerable: true,
-    writable: true
-  },
-  name: {
-    value: "Al Advisor",
-    enumerable: true
-  },
-  portfolio: {
-    value: [
-      {
-        stock: "TWTR",
-        quantity: 100,
-        price: 34.59,
-        buyTransaction: true
-      },
-      {
-        stock: "AAPL",
-        quantity: 47,
-        price: 201.59,
-        buyTransaction: true
-      }
-    ],
-    writable: true
-  },
   worth: {
     get: function () {
       let totalWorth = 0;
