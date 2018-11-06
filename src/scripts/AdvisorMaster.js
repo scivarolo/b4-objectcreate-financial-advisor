@@ -41,7 +41,7 @@ const Advisor = Object.create(null, {
         }
       })
       totalWorth = totalWorth / 100
-      return totalWorth.toFixed(2)
+      return Number(totalWorth.toFixed(2)).toLocaleString("en-US", {style: "currency", currency:"USD"})
     }
   },
   purchase: {
@@ -82,6 +82,11 @@ const Advisor = Object.create(null, {
       } else {
         alert(`${quantity} shares of ${stock} cannot be sold. You only own ${ownedQuantity}.`)
       }
+    }
+  },
+  toString: {
+    value: function() {
+      return `${this.name} is an advisor at ${this.company}. Current portfolio value is US${this.worth()}​​​​`
     }
   }
 })
