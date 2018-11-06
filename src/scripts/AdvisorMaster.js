@@ -31,7 +31,7 @@ const Advisor = Object.create(null, {
     writable: true
   },
   worth: {
-    value: function () {
+    get: function () {
       let totalWorth = 0;
       this.portfolio.forEach(function (transaction) {
         if(transaction.buyTransaction) {
